@@ -42,4 +42,19 @@ countries.
 
 Reed-Solomon code encoder is written by Phil Karn, KA9Q.
 Copyright (C) 2002, 2003, 2004, 2006 Phil Karn, KA9Q
+
+参数说明：
+$_REQUEST['data'] = '123456789asdf';
+$level = 'L';// 纠错级别：L、M、Q、H
+$size = 6;// 点的大小：1到10,用于手机端4就可以了
+
+QRcode::png($_REQUEST['data'], $filename, $errorCorrectionLevel, $matrixPointSize, 2);
+1.第一个参数$text，就是上面代码里的URL网址参数，
+2.第二个参数$outfile默认为否，不生成文件，只将二维码图片返回，否则需要给出存放生成二维码图片的路径
+3.第三个参数$level默认为L，这个参数可传递的值分别是L(QR_ECLEVEL_L，7%)，M(QR_ECLEVEL_M，15%)，Q(QR_ECLEVEL_Q，25%)，H(QR_ECLEVEL_H，30%)。这个参数控制二维码容错率，不同的参数表示二维码可被覆盖的区域百分比。利用二维维码的容错率，我们可以将头像放置在生成的二维码图片任何区域。
+4.第四个参数$size，控制生成图片的大小，默认为4
+5.第五个参数$margin，控制生成二维码的空白区域大小
+6.第六个参数$saveandprint，保存二维码图片并显示出来，$outfile必须传递图片路径。
+
+
  
